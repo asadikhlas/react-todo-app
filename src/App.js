@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
-import TodoInput from './components/Todoinput';
-import TodoList from './components/TodoList';
+import React, { Component } from "react";
+import TodoInput from "./components/Todoinput";
+import TodoList from "./components/TodoList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import uuid from "uuid";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        hello from app Component
-        <TodoInput/>
-        <TodoList/>
+      <div className="container">
+        <div className="rows">
+          <div className="col-10 mx-auto col-md-8 mt-4">
+          <h3 className="text-capitalize text-center">
+          todo input
+          </h3>
+            <TodoInput />
+            <TodoList />
+          </div>
+        </div>
       </div>
     );
   }

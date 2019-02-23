@@ -6,26 +6,44 @@ import uuid from "uuid";
 
 class App extends Component {
   state = {
-    items:[],
-    id:0,
-    item:'',
-    editItem:false
-  }
-  handleChange = (event) => {
+    items: [],
+    id: uuid(),
+    item: "",
+    editItem: false
+  };
+  handleChange = event => {
     this.setState({
-      item:event.target.value
-    })
-  }
+      item: event.target.value
+    });
+  };
+  handleSubmit = event => {
+    event.preventDefault();
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item
+    };
+    console.log(newItem)
+    const updatedItems = [...this.state.items, newItem];
+    this.setState({
+      items: updatedItems,
+      item: "",
+      id: uuid(),
+      editItem: false
+    });
+  };
+
   render() {
     return (
       <div className="container">
         <div className="rows">
           <div className="col-10 mx-auto col-md-8 mt-4">
-          <h3 className="text-capitalize text-center">
-          todo input
-          </h3>
-            <TodoInput item={this.state.item} handleChange={this.handleChange} />
-            <TodoList />
+            <h3 className="text-capitalize text-center">todo input</h3>
+            <TodoInput
+              item={this.state.item}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
+            <TodoList items={this.state.items} />
           </div>
         </div>
       </div>

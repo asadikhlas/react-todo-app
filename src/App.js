@@ -41,6 +41,9 @@ class App extends Component {
       items:filteredItems
     })
   }
+  handleEdit = (id) => {
+
+  }
 
   render() {
     return (
@@ -53,7 +56,7 @@ class App extends Component {
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
             />
-            <TodoList items={this.state.items} clearList={this.clearList} handleDelete={this.handleDelete} />
+            <TodoList items={this.state.items} clearList={this.clearList} handleDelete={this.handleDelete} handleEdit={handleEdit} />
           </div>
         </div>
       </div>
